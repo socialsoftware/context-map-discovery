@@ -16,6 +16,7 @@
 package org.contextmapper.discovery;
 
 import org.contextmapper.discovery.model.ContextMap;
+import org.contextmapper.discovery.strategies.boundedcontexts.Mono2MicroBoundedContextDiscoveryStrategy;
 import org.contextmapper.discovery.strategies.boundedcontexts.OASBoundedContextDiscoveryStrategy;
 import org.contextmapper.discovery.strategies.boundedcontexts.SpringBootBoundedContextDiscoveryStrategy;
 import org.contextmapper.discovery.strategies.names.SeparatorToCamelCaseBoundedContextNameMappingStrategy;
@@ -134,6 +135,23 @@ public class ContextMapSerializerTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             new ContextMapSerializer().serializeContextMap(contextMap, new File("test.cml"));
         });
+    }
+
+    @Test
+    public void canSaveDiscoveredModelAsCMLFileM2M() throws IOException {
+        // given
+        ContextMapDiscoverer discoverer = new ContextMapDiscoverer()
+                .usingBoundedContextDiscoveryStrategies(
+                        new Mono2MicroBoundedContextDiscoveryStrategy(new File("./src/test/resources/test/mono2micro-tests"))
+                );
+
+        // when
+        ContextMap contextmap = discoverer.discoverContextMap();
+        ContextMapSerializer serializer = new ContextMapSerializer();
+        serializer.serializeContextMap(contextmap, new File(TEST_CML_FILE));
+
+        // then
+        assertTrue(new File(TEST_CML_FILE).exists());
     }
 
 }

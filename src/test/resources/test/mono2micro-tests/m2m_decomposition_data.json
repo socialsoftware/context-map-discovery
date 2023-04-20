@@ -1,0 +1,170 @@
+{
+  "codebase": "Quizzes-Tutor",
+  "decomposition": {
+    "clusters": [
+      {
+        "name": "Cluster1",
+        "elements": [
+          {
+            "name": "QuestionSubmission"
+          },
+          {
+            "name": "Assessment"
+          },
+          {
+            "name": "Discussion"
+          },
+          {
+            "name": "Dashboard"
+          },
+          {
+            "name": "AuthUser"
+          },
+          {
+            "name": "Quiz"
+          },
+          {
+            "name": "TopicConjunction"
+          },
+          {
+            "name": "CourseExecution"
+          },
+          {
+            "name": "QuizQuestion"
+          },
+          {
+            "name": "DifficultQuestion"
+          },
+          {
+            "name": "QuizAnswer"
+          },
+          {
+            "name": "Reply"
+          },
+          {
+            "name": "Question"
+          },
+          {
+            "name": "Tournament"
+          },
+          {
+            "name": "User"
+          },
+          {
+            "name": "AuthExternalUser"
+          },
+          {
+            "name": "DemoAdmin"
+          },
+          {
+            "name": "Course"
+          },
+          {
+            "name": "FailedAnswer"
+          },
+          {
+            "name": "Topic"
+          },
+          {
+            "name": "Teacher"
+          },
+          {
+            "name": "AuthDemoUser"
+          },
+          {
+            "name": "AuthTecnicoUser"
+          },
+          {
+            "name": "QuestionAnswer"
+          },
+          {
+            "name": "Review"
+          },
+          {
+            "name": "Student"
+          }
+        ]
+      },
+      {
+        "name": "Cluster0",
+        "elements": [
+          {
+            "name": "CodeOrderAnswer"
+          },
+          {
+            "name": "AnswerDetails"
+          },
+          {
+            "name": "QuizAnswerItem"
+          },
+          {
+            "name": "CodeFillInAnswer"
+          },
+          {
+            "name": "MultipleChoiceAnswer"
+          }
+        ]
+      },
+      {
+        "name": "Cluster3",
+        "elements": [
+          {
+            "name": "CodeFillInSpot"
+          },
+          {
+            "name": "MultipleChoiceQuestion"
+          },
+          {
+            "name": "CodeOrderQuestion"
+          },
+          {
+            "name": "Image"
+          },
+          {
+            "name": "CodeOrderAnswerSlot"
+          },
+          {
+            "name": "Option"
+          },
+          {
+            "name": "CodeOrderSlot"
+          },
+          {
+            "name": "CodeFillInOption"
+          },
+          {
+            "name": "CodeFillInQuestion"
+          },
+          {
+            "name": "QuestionDetails"
+          }
+        ]
+      },
+      {
+        "name": "Cluster2",
+        "elements": [
+          {
+            "name": "CodeFillInAnswerItem"
+          },
+          {
+            "name": "QuestionAnswerItem"
+          },
+          {
+            "name": "MultipleChoiceAnswerItem"
+          },
+          {
+            "name": "CodeOrderAnswerItem"
+          }
+        ]
+      },
+      {
+        "name": "Cluster4",
+        "elements": [
+          {
+            "name": "WeeklyScore"
+          }
+        ]
+      }
+    ]
+  }
+}
