@@ -17,41 +17,93 @@ package org.contextmapper.discovery.strategies.boundedcontexts;
 
 import org.contextmapper.discovery.ContextMapDiscoverer;
 import org.contextmapper.discovery.model.*;
-import org.contextmapper.discovery.strategies.names.SeparatorToCamelCaseBoundedContextNameMappingStrategy;
-import org.contextmapper.discovery.strategies.relationships.DockerComposeRelationshipDiscoveryStrategy;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.File;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Mono2MicroBoundedContextDiscoveryStrategyTest {
 
     @Test
-    public void canReadMono2MicroDataFile() {
+    public void canDiscoverBoundedContextsFromClusters() {
         // given
         ContextMapDiscoverer discoverer = new ContextMapDiscoverer()
                 .usingBoundedContextDiscoveryStrategies(
-                        new Mono2MicroBoundedContextDiscoveryStrategy(new File("./src/test/resources/test/mono2micro-tests"))
-                );
+                        new Mono2MicroBoundedContextDiscoveryStrategy(
+                                new File("./src/test/resources/test/mono2micro/valid-contract")));
 
         // when
         Set<BoundedContext> boundedContexts = discoverer.discoverContextMap().getBoundedContexts();
 
         // then
         assertEquals(5, boundedContexts.size());
-        BoundedContext bc = boundedContexts.iterator().next();
-        assertEquals(1, bc.getAggregates().size());
-        Aggregate aggregate = bc.getAggregates().iterator().next();
-        assertEquals("Cluster0", aggregate.getName());
-        assertEquals(5, aggregate.getDomainObjects().size());
+        assertTrue(boundedContexts.stream()
+                .map(BoundedContext::getName)
+                .collect(Collectors.toList())
+                .containsAll(Arrays.asList("Cluster0", "Cluster1", "Cluster2", "Cluster3", "Cluster4")));
     }
 
+    @Test
+    public void canDiscoverAggregatesFromClusters() {
+        // given
+        ContextMapDiscoverer discoverer = new ContextMapDiscoverer()
+                .usingBoundedContextDiscoveryStrategies(
+                        new Mono2MicroBoundedContextDiscoveryStrategy(
+                                new File("./src/test/resources/test/mono2micro/valid-contract")));
+
+        // when
+        Set<BoundedContext> boundedContexts = discoverer.discoverContextMap().getBoundedContexts();
+
+        // then
+        assertTrue(boundedContexts.size() > 0);
+        BoundedContext boundedContext = boundedContexts.iterator().next();
+        assertEquals(1, boundedContext.getAggregates().size());
+        Aggregate aggregate = boundedContext.getAggregates().iterator().next();
+        assertEquals(aggregate.getName(), boundedContext.getName());
+    }
+
+    @Test
+    public void canDiscoverDomainObjectsFromClusterElements() {
+        // given
+        ContextMapDiscoverer discoverer = new ContextMapDiscoverer()
+                .usingBoundedContextDiscoveryStrategies(
+                        new Mono2MicroBoundedContextDiscoveryStrategy(
+                                new File("./src/test/resources/test/mono2micro/valid-contract")));
+
+        // when
+        Set<BoundedContext> boundedContexts = discoverer.discoverContextMap().getBoundedContexts();
+
+        // then
+        assertTrue(boundedContexts.size() > 0);
+        BoundedContext boundedContext = boundedContexts.stream()
+                .filter(bc -> bc.getName().equals("Cluster0"))
+                .findFirst().orElse(null);
+        assertNotNull(boundedContext);
+        assertEquals(1, boundedContext.getAggregates().size());
+        Set<DomainObject> domainObjects = boundedContext.getAggregates().iterator().next().getDomainObjects();
+        assertEquals(5, domainObjects.size());
+        assertTrue(domainObjects.stream().allMatch(bc -> bc.getType().equals(DomainObjectType.ENTITY)));
+        assertTrue(domainObjects.stream()
+                .map(DomainObject::getName)
+                .collect(Collectors.toList())
+                .containsAll(Arrays.asList("CodeOrderAnswer", "AnswerDetails", "QuizAnswerItem", "CodeFillInAnswer", "MultipleChoiceAnswer")));
+    }
+
+    @Test
+    public void emptyResultIfM2MContractHasInvalidFormat() {
+        // given
+        ContextMapDiscoverer discoverer = new ContextMapDiscoverer()
+                .usingBoundedContextDiscoveryStrategies(
+                        new Mono2MicroBoundedContextDiscoveryStrategy(
+                                new File("./src/test/resources/test/mono2micro/invalid-contract")));
+
+        // when
+        Set<BoundedContext> boundedContexts = discoverer.discoverContextMap().getBoundedContexts();
+
+        // then
+        assertEquals(0, boundedContexts.size());
+    }
 }

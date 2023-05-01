@@ -20,6 +20,8 @@ public class Mono2MicroBoundedContextDiscoveryStrategy extends AbstractBoundedCo
 
     private File sourcePath;
 
+    private static final String M2M_DATA_FILE_CONTRACT = "m2m_decomposition_data.json";
+
     public Mono2MicroBoundedContextDiscoveryStrategy(File sourcePath) {
         this.sourcePath = sourcePath;
     }
@@ -27,67 +29,118 @@ public class Mono2MicroBoundedContextDiscoveryStrategy extends AbstractBoundedCo
     @Override
     public Set<BoundedContext> discoverBoundedContexts() {
         Set<BoundedContext> boundedContexts = new HashSet<>();
-
         for (File decompositionFile : findMono2microDecompositionFiles()) {
-            boundedContexts.addAll(readFile(decompositionFile));
+            boundedContexts.addAll(discoverBoundedContexts(decompositionFile));
         }
 
         return boundedContexts;
     }
 
-    public Set<BoundedContext> readFile(File fileToRead) {
+    private Set<BoundedContext> discoverBoundedContexts(File m2mDataFile) {
         Set<BoundedContext> boundedContexts = new HashSet<>();
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        try {
-            Map<String, Object> map = objectMapper.readValue(
-                    new FileInputStream(fileToRead),
-                    new TypeReference<HashMap<String, Object>>() {}
-            );
-
-            Map<String, List<Object>> decomposition = (Map<String, List<Object>>) map.get("decomposition");
-            List<Object> clusters = decomposition.get("clusters");
-
-            for (Object cluster : clusters) {
-                Map<String, Object> clusterMap = (Map<String, Object>) cluster;
-
-                Set<DomainObject> domainObjects = discoverDomainEntities(clusterMap);
-                String clusterName = (String) clusterMap.get("name");
-
-                Aggregate aggregate = new Aggregate(clusterName);
-                aggregate.addDomainObjects(domainObjects);
-
-                BoundedContext boundedContext = new BoundedContext(clusterName);
-                boundedContext.addAggregate(aggregate);
-
-                boundedContexts.add(boundedContext);
-            }
-
-            return boundedContexts;
-
-        } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException("The file '" + fileToRead + "' does not exist!", e);
-        } catch (IOException e) {
-            throw new IllegalArgumentException("The file '" + fileToRead + "' could not be read by the JSON parser", e);
+        for (Cluster cluster : parseM2MDecomposition(m2mDataFile)) {
+            BoundedContext boundedContext = new BoundedContext(cluster.getName());
+            boundedContext.addAggregate(discoverAggregate(cluster));
+            boundedContexts.add(boundedContext);
         }
+
+        return boundedContexts;
     }
 
-    public void discoverAggregates() {
+    private Aggregate discoverAggregate(Cluster cluster) {
+        Aggregate aggregate = new Aggregate(cluster.getName());
+        aggregate.addDomainObjects(discoverDomainObjects(cluster));
+        return aggregate;
     }
 
-    public Set<DomainObject> discoverDomainEntities(Map<String, Object> cluster) {
-        List<Object> elements = (List<Object>) cluster.get("elements");
+    private Set<DomainObject> discoverDomainObjects(Cluster cluster) {
         Set<DomainObject> domainObjects = new HashSet<>();
-
-        for (Object element : elements) {
-            String elementName = (String) ((Map<String, Object>) element).get("name");
+        for (String elementName : cluster.getElementNames()) {
             domainObjects.add(new DomainObject(DomainObjectType.ENTITY, elementName));
         }
 
         return domainObjects;
     }
 
+    protected Set<Cluster> parseM2MDecomposition(File m2mDataFile) {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            Map<String, Object> objectMap = objectMapper.readValue(
+                    new FileInputStream(m2mDataFile),
+                    new TypeReference<HashMap<String, Object>>() {});
+
+            return parseClusters(objectMap);
+
+        } catch (FileNotFoundException e) {
+            throw new IllegalArgumentException("The file '" + m2mDataFile + "' does not exist!", e);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("The file '" + m2mDataFile + "' could not be read by the JSON parser!", e);
+        }
+    }
+
+    private Set<Cluster> parseClusters(Map<String, Object> objectMap) {
+        Set<Cluster> clusters = new HashSet<>();
+
+        Map<String, Object> decomposition = (Map<String, Object>) objectMap.get("decomposition");
+        if (decomposition == null) {
+            return clusters;
+        }
+
+        for (Object clusterObj : (List<Object>) decomposition.get("clusters")) {
+            Map<String, Object> clusterMap = (Map<String, Object>) clusterObj;
+
+            String clusterName = (String) clusterMap.get("name");
+            if (clusterName == null) {
+                continue;
+            }
+
+            Cluster cluster = new Cluster(clusterName);
+            cluster.addElementNames(parseClusterElements(clusterMap));
+            clusters.add(cluster);
+        }
+
+        return clusters;
+    }
+
+    private Set<String> parseClusterElements(Map<String, Object> clusterMap) {
+        Set<String> elementNames = new HashSet<>();
+
+        for (Object element : (List<Object>) clusterMap.get("elements")) {
+            String elementName = (String) ((Map<String, Object>) element).get("name");
+            if (elementName == null) {
+                continue;
+            }
+            elementNames.add(elementName);
+        }
+
+        return elementNames;
+    }
+
     private Collection<File> findMono2microDecompositionFiles() {
-        return FileUtils.listFiles(sourcePath, new NameFileFilter("m2m_decomposition_data.json"), TrueFileFilter.INSTANCE);
+        return FileUtils.listFiles(sourcePath, new NameFileFilter(M2M_DATA_FILE_CONTRACT), TrueFileFilter.INSTANCE);
+    }
+
+    protected class Cluster {
+
+        private String name;
+        private Set<String> elementNames;
+
+        Cluster(String name) {
+            this.name = name;
+            this.elementNames = new HashSet<>();
+        }
+
+        protected String getName() {
+            return name;
+        }
+
+        protected Set<String> getElementNames() {
+            return elementNames;
+        }
+
+        protected void addElementNames(Set<String> elementNames) {
+            this.elementNames.addAll(elementNames);
+        }
     }
 }
