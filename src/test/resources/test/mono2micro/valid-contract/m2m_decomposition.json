@@ -1,0 +1,223 @@
+{
+  "clusters": [
+    {
+      "elements": [
+        {
+          "id": 44,
+          "name": "Tournament"
+        },
+        {
+          "id": 42,
+          "name": "Topic"
+        },
+        {
+          "id": 2,
+          "name": "Assessment"
+        },
+        {
+          "id": 43,
+          "name": "TopicConjunction"
+        },
+        {
+          "id": 17,
+          "name": "Course"
+        },
+        {
+          "id": 21,
+          "name": "DifficultQuestion"
+        },
+        {
+          "id": 33,
+          "name": "QuestionSubmission"
+        },
+        {
+          "id": 39,
+          "name": "Review"
+        }
+      ],
+      "name": "Cluster1"
+    },
+    {
+      "elements": [
+        {
+          "id": 36,
+          "name": "QuizAnswerItem"
+        },
+        {
+          "id": 7,
+          "name": "CodeFillInAnswer"
+        },
+        {
+          "id": 1,
+          "name": "AnswerDetails"
+        },
+        {
+          "id": 12,
+          "name": "CodeOrderAnswer"
+        },
+        {
+          "id": 25,
+          "name": "MultipleChoiceAnswer"
+        }
+      ],
+      "name": "Cluster0"
+    },
+    {
+      "elements": [
+        {
+          "id": 29,
+          "name": "Question"
+        },
+        {
+          "id": 18,
+          "name": "CourseExecution"
+        },
+        {
+          "id": 19,
+          "name": "Dashboard"
+        },
+        {
+          "id": 38,
+          "name": "Reply"
+        },
+        {
+          "id": 41,
+          "name": "Teacher"
+        },
+        {
+          "id": 22,
+          "name": "Discussion"
+        },
+        {
+          "id": 30,
+          "name": "QuestionAnswer"
+        },
+        {
+          "id": 37,
+          "name": "QuizQuestion"
+        },
+        {
+          "id": 6,
+          "name": "AuthUser"
+        },
+        {
+          "id": 23,
+          "name": "FailedAnswer"
+        },
+        {
+          "id": 45,
+          "name": "User"
+        },
+        {
+          "id": 35,
+          "name": "QuizAnswer"
+        },
+        {
+          "id": 40,
+          "name": "Student"
+        },
+        {
+          "id": 34,
+          "name": "Quiz"
+        }
+      ],
+      "name": "Cluster3"
+    },
+    {
+      "elements": [
+        {
+          "id": 5,
+          "name": "AuthTecnicoUser"
+        },
+        {
+          "id": 3,
+          "name": "AuthDemoUser"
+        },
+        {
+          "id": 4,
+          "name": "AuthExternalUser"
+        },
+        {
+          "id": 20,
+          "name": "DemoAdmin"
+        }
+      ],
+      "name": "Cluster2"
+    },
+    {
+      "elements": [
+        {
+          "id": 15,
+          "name": "CodeOrderQuestion"
+        },
+        {
+          "id": 27,
+          "name": "MultipleChoiceQuestion"
+        },
+        {
+          "id": 24,
+          "name": "Image"
+        },
+        {
+          "id": 32,
+          "name": "QuestionDetails"
+        },
+        {
+          "id": 11,
+          "name": "CodeFillInSpot"
+        },
+        {
+          "id": 16,
+          "name": "CodeOrderSlot"
+        },
+        {
+          "id": 28,
+          "name": "Option"
+        },
+        {
+          "id": 14,
+          "name": "CodeOrderAnswerSlot"
+        },
+        {
+          "id": 10,
+          "name": "CodeFillInQuestion"
+        },
+        {
+          "id": 9,
+          "name": "CodeFillInOption"
+        }
+      ],
+      "name": "Cluster5"
+    },
+    {
+      "elements": [
+        {
+          "id": 13,
+          "name": "CodeOrderAnswerItem"
+        },
+        {
+          "id": 8,
+          "name": "CodeFillInAnswerItem"
+        },
+        {
+          "id": 26,
+          "name": "MultipleChoiceAnswerItem"
+        },
+        {
+          "id": 31,
+          "name": "QuestionAnswerItem"
+        }
+      ],
+      "name": "Cluster4"
+    },
+    {
+      "elements": [
+        {
+          "id": 46,
+          "name": "WeeklyScore"
+        }
+      ],
+      "name": "Cluster6"
+    }
+  ]
+}
