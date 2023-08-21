@@ -17,6 +17,7 @@ package org.contextmapper.discovery.strategies.boundedcontexts;
 
 import org.contextmapper.discovery.ContextMapDiscoverer;
 import org.contextmapper.discovery.model.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -39,11 +40,11 @@ public class Mono2MicroBoundedContextDiscoveryStrategyTest {
         Set<BoundedContext> boundedContexts = discoverer.discoverContextMap().getBoundedContexts();
 
         // then
-        assertEquals(5, boundedContexts.size());
+        assertEquals(7, boundedContexts.size());
         assertTrue(boundedContexts.stream()
                 .map(BoundedContext::getName)
                 .collect(Collectors.toList())
-                .containsAll(Arrays.asList("Cluster0", "Cluster1", "Cluster2", "Cluster3", "Cluster4")));
+                .containsAll(Arrays.asList("Cluster0", "Cluster1", "Cluster2", "Cluster3", "Cluster4", "Cluster5", "Cluster6")));
     }
 
     @Test
@@ -100,10 +101,7 @@ public class Mono2MicroBoundedContextDiscoveryStrategyTest {
                         new Mono2MicroBoundedContextDiscoveryStrategy(
                                 new File("./src/test/resources/test/mono2micro/invalid-contract")));
 
-        // when
-        Set<BoundedContext> boundedContexts = discoverer.discoverContextMap().getBoundedContexts();
-
-        // then
-        assertEquals(0, boundedContexts.size());
+        // when, then
+        Assertions.assertThrows(IllegalArgumentException.class, discoverer::discoverContextMap);
     }
 }

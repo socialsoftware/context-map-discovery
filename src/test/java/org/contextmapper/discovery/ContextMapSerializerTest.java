@@ -142,7 +142,7 @@ public class ContextMapSerializerTest {
         // given
         ContextMapDiscoverer discoverer = new ContextMapDiscoverer()
                 .usingBoundedContextDiscoveryStrategies(
-                        new Mono2MicroBoundedContextDiscoveryStrategy(new File("./src/test/resources/test/mono2micro-tests"))
+                        new Mono2MicroBoundedContextDiscoveryStrategy(new File("./src/test/resources/test/mono2micro/valid-contract"))
                 );
 
         // when

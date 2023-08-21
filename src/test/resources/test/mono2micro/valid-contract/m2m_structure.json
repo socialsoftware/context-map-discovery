@@ -1,0 +1,1642 @@
+{
+  "entities" : [ {
+    "name" : "AnswerDetails",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "questionAnswer",
+      "type" : {
+        "name" : "QuestionAnswer"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "CodeFillInAnswer",
+    "fields" : [ {
+      "name" : "codeFillInOptions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "CodeFillInOption"
+        } ]
+      }
+    } ],
+    "superclass" : {
+      "name" : "AnswerDetails"
+    }
+  }, {
+    "name" : "CodeFillInAnswerItem",
+    "fields" : [ {
+      "name" : "optionIds",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "Integer"
+        } ]
+      }
+    } ],
+    "superclass" : {
+      "name" : "QuestionAnswerItem"
+    }
+  }, {
+    "name" : "CodeOrderAnswer",
+    "fields" : [ {
+      "name" : "orderedSlots",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "CodeOrderAnswerSlot"
+        } ]
+      }
+    } ],
+    "superclass" : {
+      "name" : "AnswerDetails"
+    }
+  }, {
+    "name" : "CodeOrderAnswerItem",
+    "fields" : [ {
+      "name" : "orderedSlots",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "CodeOrderSlotAnswerItem"
+        } ]
+      }
+    } ],
+    "superclass" : {
+      "name" : "QuestionAnswerItem"
+    }
+  }, {
+    "name" : "CodeOrderAnswerSlot",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "codeOrderAnswer",
+      "type" : {
+        "name" : "CodeOrderAnswer"
+      }
+    }, {
+      "name" : "codeOrderSlot",
+      "type" : {
+        "name" : "CodeOrderSlot"
+      }
+    }, {
+      "name" : "assignedOrder",
+      "type" : {
+        "name" : "Integer"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "CodeOrderSlotAnswerItem",
+    "fields" : [ {
+      "name" : "slotId",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "assignedOrder",
+      "type" : {
+        "name" : "Integer"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "MultipleChoiceAnswer",
+    "fields" : [ {
+      "name" : "option",
+      "type" : {
+        "name" : "Option"
+      }
+    } ],
+    "superclass" : {
+      "name" : "AnswerDetails"
+    }
+  }, {
+    "name" : "MultipleChoiceAnswerItem",
+    "fields" : [ {
+      "name" : "optionId",
+      "type" : {
+        "name" : "Integer"
+      }
+    } ],
+    "superclass" : {
+      "name" : "QuestionAnswerItem"
+    }
+  }, {
+    "name" : "QuestionAnswer",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "timeTaken",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "quizQuestion",
+      "type" : {
+        "name" : "QuizQuestion"
+      }
+    }, {
+      "name" : "quizAnswer",
+      "type" : {
+        "name" : "QuizAnswer"
+      }
+    }, {
+      "name" : "sequence",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "answerDetails",
+      "type" : {
+        "name" : "AnswerDetails"
+      }
+    }, {
+      "name" : "discussion",
+      "type" : {
+        "name" : "Discussion"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "QuestionAnswerItem",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "quizId",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "username",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "quizQuestionId",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "answerDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "timeTaken",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "timeToSubmission",
+      "type" : {
+        "name" : "Integer"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "QuizAnswer",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "creationDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "answerDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "completed",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "fraud",
+      "type" : {
+        "name" : "Boolean"
+      }
+    }, {
+      "name" : "usedInStatistics",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "currentSequenceQuestion",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "questionIds",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "Integer"
+        } ]
+      }
+    }, {
+      "name" : "student",
+      "type" : {
+        "name" : "Student"
+      }
+    }, {
+      "name" : "quiz",
+      "type" : {
+        "name" : "Quiz"
+      }
+    }, {
+      "name" : "questionAnswers",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "QuestionAnswer"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "QuizAnswerItem",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "quizId",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "quizAnswerId",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "answerDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "answers",
+      "type" : {
+        "name" : "String"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "AuthDemoUser",
+    "fields" : [ ],
+    "superclass" : {
+      "name" : "AuthUser"
+    }
+  }, {
+    "name" : "AuthExternalUser",
+    "fields" : [ {
+      "name" : "active",
+      "type" : {
+        "name" : "Boolean"
+      }
+    }, {
+      "name" : "confirmationToken",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "tokenGenerationDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    } ],
+    "superclass" : {
+      "name" : "AuthUser"
+    }
+  }, {
+    "name" : "AuthTecnicoUser",
+    "fields" : [ {
+      "name" : "enrolledCoursesAcronyms",
+      "type" : {
+        "name" : "String"
+      }
+    } ],
+    "superclass" : {
+      "name" : "AuthUser"
+    }
+  }, {
+    "name" : "AuthUser",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "user",
+      "type" : {
+        "name" : "User"
+      }
+    }, {
+      "name" : "email",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "password",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "username",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "lastAccess",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "courseExecutionsIds",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "Integer"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Dashboard",
+    "fields" : [ {
+      "name" : "weeklyScores",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "WeeklyScore"
+        } ]
+      }
+    }, {
+      "name" : "removedDifficultQuestions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "RemovedDifficultQuestion"
+        } ]
+      }
+    }, {
+      "name" : "failedAnswers",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "FailedAnswer"
+        } ]
+      }
+    }, {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "numberOfTeacherQuizzes",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "numberOfStudentQuizzes",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "numberOfInClassQuizzes",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "numberOfTeacherAnswers",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "numberOfInClassAnswers",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "numberOfStudentAnswers",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "numberOfCorrectTeacherAnswers",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "numberOfCorrectInClassAnswers",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "numberOfCorrectStudentAnswers",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "lastCheckFailedAnswers",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "lastCheckWeeklyScores",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "courseExecution",
+      "type" : {
+        "name" : "CourseExecution"
+      }
+    }, {
+      "name" : "student",
+      "type" : {
+        "name" : "Student"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "DifficultQuestion",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "percentage",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "question",
+      "type" : {
+        "name" : "Question"
+      }
+    }, {
+      "name" : "courseExecution",
+      "type" : {
+        "name" : "CourseExecution"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "FailedAnswer",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "collected",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "answered",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "questionAnswer",
+      "type" : {
+        "name" : "QuestionAnswer"
+      }
+    }, {
+      "name" : "dashboard",
+      "type" : {
+        "name" : "Dashboard"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "RemovedDifficultQuestion",
+    "fields" : [ {
+      "name" : "questionId",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "removedDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "WeeklyScore",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "quizzesAnswered",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "questionsAnswered",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "questionsUniquelyAnswered",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "percentageCorrect",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "improvedCorrectAnswers",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "week",
+      "type" : {
+        "name" : "LocalDate"
+      }
+    }, {
+      "name" : "closed",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "dashboard",
+      "type" : {
+        "name" : "Dashboard"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Discussion",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "questionAnswer",
+      "type" : {
+        "name" : "QuestionAnswer"
+      }
+    }, {
+      "name" : "student",
+      "type" : {
+        "name" : "Student"
+      }
+    }, {
+      "name" : "message",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "question",
+      "type" : {
+        "name" : "Question"
+      }
+    }, {
+      "name" : "courseExecution",
+      "type" : {
+        "name" : "CourseExecution"
+      }
+    }, {
+      "name" : "replies",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "Reply"
+        } ]
+      }
+    }, {
+      "name" : "date",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "closed",
+      "type" : {
+        "name" : "boolean"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Reply",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "discussion",
+      "type" : {
+        "name" : "Discussion"
+      }
+    }, {
+      "name" : "user",
+      "type" : {
+        "name" : "User"
+      }
+    }, {
+      "name" : "message",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "date",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "isPublic",
+      "type" : {
+        "name" : "boolean"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Assessment",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "title",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "sequence",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "status",
+      "type" : {
+        "name" : "Status"
+      }
+    }, {
+      "name" : "courseExecution",
+      "type" : {
+        "name" : "CourseExecution"
+      }
+    }, {
+      "name" : "topicConjunctions",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "TopicConjunction"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "CourseExecution",
+    "fields" : [ {
+      "name" : "users",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "User"
+        } ]
+      }
+    }, {
+      "name" : "quizzes",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Quiz"
+        } ]
+      }
+    }, {
+      "name" : "assessments",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Assessment"
+        } ]
+      }
+    }, {
+      "name" : "questionSubmissions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "QuestionSubmission"
+        } ]
+      }
+    }, {
+      "name" : "discussions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Discussion"
+        } ]
+      }
+    }, {
+      "name" : "difficultQuestions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "DifficultQuestion"
+        } ]
+      }
+    }, {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "type",
+      "type" : {
+        "name" : "Type"
+      }
+    }, {
+      "name" : "acronym",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "academicTerm",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "status",
+      "type" : {
+        "name" : "Status"
+      }
+    }, {
+      "name" : "endDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "course",
+      "type" : {
+        "name" : "Course"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "TopicConjunction",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "topics",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Topic"
+        } ]
+      }
+    }, {
+      "name" : "assessment",
+      "type" : {
+        "name" : "Assessment"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "CodeFillInOption",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "sequence",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "correct",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "content",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "codeFillInSpot",
+      "type" : {
+        "name" : "CodeFillInSpot"
+      }
+    }, {
+      "name" : "questionAnswers",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "CodeFillInAnswer"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "CodeFillInQuestion",
+    "fields" : [ {
+      "name" : "language",
+      "type" : {
+        "name" : "Languages"
+      }
+    }, {
+      "name" : "code",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "codeFillInSpots",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "CodeFillInSpot"
+        } ]
+      }
+    } ],
+    "superclass" : {
+      "name" : "QuestionDetails"
+    }
+  }, {
+    "name" : "CodeFillInSpot",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "sequence",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "questionDetails",
+      "type" : {
+        "name" : "CodeFillInQuestion"
+      }
+    }, {
+      "name" : "options",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "CodeFillInOption"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "CodeOrderQuestion",
+    "fields" : [ {
+      "name" : "language",
+      "type" : {
+        "name" : "Languages"
+      }
+    }, {
+      "name" : "codeOrderSlots",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "CodeOrderSlot"
+        } ]
+      }
+    } ],
+    "superclass" : {
+      "name" : "QuestionDetails"
+    }
+  }, {
+    "name" : "CodeOrderSlot",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "sequence",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "order",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "content",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "questionDetails",
+      "type" : {
+        "name" : "CodeOrderQuestion"
+      }
+    }, {
+      "name" : "orderedSlots",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "CodeOrderAnswerSlot"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Course",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "type",
+      "type" : {
+        "name" : "Type"
+      }
+    }, {
+      "name" : "name",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "courseExecutions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "CourseExecution"
+        } ]
+      }
+    }, {
+      "name" : "questions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Question"
+        } ]
+      }
+    }, {
+      "name" : "topics",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Topic"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Image",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "url",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "width",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "question",
+      "type" : {
+        "name" : "Question"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "MultipleChoiceQuestion",
+    "fields" : [ {
+      "name" : "options",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "Option"
+        } ]
+      }
+    } ],
+    "superclass" : {
+      "name" : "QuestionDetails"
+    }
+  }, {
+    "name" : "Option",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "sequence",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "correct",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "content",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "questionDetails",
+      "type" : {
+        "name" : "MultipleChoiceQuestion"
+      }
+    }, {
+      "name" : "questionAnswers",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "MultipleChoiceAnswer"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Question",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "key",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "content",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "title",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "numberOfAnswers",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "numberOfCorrect",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "status",
+      "type" : {
+        "name" : "Status"
+      }
+    }, {
+      "name" : "creationDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "image",
+      "type" : {
+        "name" : "Image"
+      }
+    }, {
+      "name" : "course",
+      "type" : {
+        "name" : "Course"
+      }
+    }, {
+      "name" : "questionDetails",
+      "type" : {
+        "name" : "QuestionDetails"
+      }
+    }, {
+      "name" : "quizQuestions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "QuizQuestion"
+        } ]
+      }
+    }, {
+      "name" : "topics",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Topic"
+        } ]
+      }
+    }, {
+      "name" : "discussions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Discussion"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "QuestionDetails",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "question",
+      "type" : {
+        "name" : "Question"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Topic",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "name",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "questions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Question"
+        } ]
+      }
+    }, {
+      "name" : "topicConjunctions",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "TopicConjunction"
+        } ]
+      }
+    }, {
+      "name" : "course",
+      "type" : {
+        "name" : "Course"
+      }
+    }, {
+      "name" : "tournaments",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Tournament"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "QuestionSubmission",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "question",
+      "type" : {
+        "name" : "Question"
+      }
+    }, {
+      "name" : "submitter",
+      "type" : {
+        "name" : "Student"
+      }
+    }, {
+      "name" : "courseExecution",
+      "type" : {
+        "name" : "CourseExecution"
+      }
+    }, {
+      "name" : "status",
+      "type" : {
+        "name" : "Status"
+      }
+    }, {
+      "name" : "studentRead",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "teacherRead",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "reviews",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Review"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Review",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "comment",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "creationDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "user",
+      "type" : {
+        "name" : "User"
+      }
+    }, {
+      "name" : "questionSubmission",
+      "type" : {
+        "name" : "QuestionSubmission"
+      }
+    }, {
+      "name" : "type",
+      "type" : {
+        "name" : "Type"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Quiz",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "key",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "creationDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "availableDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "conclusionDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "resultsDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "scramble",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "qrCodeOnly",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "code",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "oneWay",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "title",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "type",
+      "type" : {
+        "name" : "QuizType"
+      }
+    }, {
+      "name" : "series",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "version",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "quizQuestions",
+      "type" : {
+        "name" : "List",
+        "parameters" : [ {
+          "name" : "QuizQuestion"
+        } ]
+      }
+    }, {
+      "name" : "quizAnswers",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "QuizAnswer"
+        } ]
+      }
+    }, {
+      "name" : "courseExecution",
+      "type" : {
+        "name" : "CourseExecution"
+      }
+    }, {
+      "name" : "tournament",
+      "type" : {
+        "name" : "Tournament"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "QuizQuestion",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "quiz",
+      "type" : {
+        "name" : "Quiz"
+      }
+    }, {
+      "name" : "question",
+      "type" : {
+        "name" : "Question"
+      }
+    }, {
+      "name" : "questionAnswers",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "QuestionAnswer"
+        } ]
+      }
+    }, {
+      "name" : "sequence",
+      "type" : {
+        "name" : "Integer"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "Tournament",
+    "fields" : [ {
+      "name" : "MAX_NUMBER_OF_QUESTIONS",
+      "type" : {
+        "name" : "int"
+      }
+    }, {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "startTime",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "endTime",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "numberOfQuestions",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "creator",
+      "type" : {
+        "name" : "Student"
+      }
+    }, {
+      "name" : "isCanceled",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "participants",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Student"
+        } ]
+      }
+    }, {
+      "name" : "courseExecution",
+      "type" : {
+        "name" : "CourseExecution"
+      }
+    }, {
+      "name" : "topics",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Topic"
+        } ]
+      }
+    }, {
+      "name" : "quiz",
+      "type" : {
+        "name" : "Quiz"
+      }
+    }, {
+      "name" : "privateTournament",
+      "type" : {
+        "name" : "boolean"
+      }
+    }, {
+      "name" : "password",
+      "type" : {
+        "name" : "String"
+      }
+    } ],
+    "superclass" : null
+  }, {
+    "name" : "DemoAdmin",
+    "fields" : [ ],
+    "superclass" : {
+      "name" : "User"
+    }
+  }, {
+    "name" : "Student",
+    "fields" : [ {
+      "name" : "quizAnswers",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "QuizAnswer"
+        } ]
+      }
+    }, {
+      "name" : "tournaments",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Tournament"
+        } ]
+      }
+    }, {
+      "name" : "discussions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Discussion"
+        } ]
+      }
+    }, {
+      "name" : "questionSubmissions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "QuestionSubmission"
+        } ]
+      }
+    }, {
+      "name" : "dashboards",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Dashboard"
+        } ]
+      }
+    } ],
+    "superclass" : {
+      "name" : "User"
+    }
+  }, {
+    "name" : "Teacher",
+    "fields" : [ ],
+    "superclass" : {
+      "name" : "User"
+    }
+  }, {
+    "name" : "User",
+    "fields" : [ {
+      "name" : "id",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "key",
+      "type" : {
+        "name" : "Integer"
+      }
+    }, {
+      "name" : "role",
+      "type" : {
+        "name" : "Role"
+      }
+    }, {
+      "name" : "name",
+      "type" : {
+        "name" : "String"
+      }
+    }, {
+      "name" : "admin",
+      "type" : {
+        "name" : "Boolean"
+      }
+    }, {
+      "name" : "creationDate",
+      "type" : {
+        "name" : "LocalDateTime"
+      }
+    }, {
+      "name" : "authUser",
+      "type" : {
+        "name" : "AuthUser"
+      }
+    }, {
+      "name" : "courseExecutions",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "CourseExecution"
+        } ]
+      }
+    }, {
+      "name" : "replies",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Reply"
+        } ]
+      }
+    }, {
+      "name" : "reviews",
+      "type" : {
+        "name" : "Set",
+        "parameters" : [ {
+          "name" : "Review"
+        } ]
+      }
+    } ],
+    "superclass" : null
+  } ]
+}
